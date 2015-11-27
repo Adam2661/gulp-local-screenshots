@@ -8,7 +8,7 @@ var st = require('st');
 // Core screenshot function using phamtonJS
 var browser = function (file, opts, cb) {
   var width = opts.width.slice(0);
-  var filename = file.replace(opts.path, '');
+  var filename = file.replace(opts.path, '').replace('\\','/');
   var url = opts.protocol + '://' +  opts.host + ':' + opts.port + '/' + filename;
 
   phantom.create(function (ph) {
@@ -51,7 +51,11 @@ var browser = function (file, opts, cb) {
       };
       screenshot(width.pop());
     });
-  });
+  }, {
+  dnodeOpts: {
+    weak: false
+  }
+});
 };
 
 module.exports = function (options) {
