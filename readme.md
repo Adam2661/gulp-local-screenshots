@@ -79,6 +79,13 @@ Default: '200'
 
 Timeout between files, in most cases you dont need to change that
 
+#### delay
+
+Type: `Number`  
+Default: '0'
+
+Delay after page render
+
 #### protocol
 
 Type: `String`  
