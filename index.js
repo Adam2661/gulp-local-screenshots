@@ -43,10 +43,12 @@ var browser = function (file, opts, cb) {
             style.appendChild(text);
             document.head.insertBefore(style, document.head.firstChild);
           });
-          page.render(opts.folder + '/' + dest, function () {
-            gutil.log('gulp-local-screenshots:', gutil.colors.green('✔ ') + dest);
-            screenshot(width.pop());
-          });
+          setTimeout(function() {
+             page.render(opts.folder + '/' + dest, function () {
+               gutil.log('gulp-local-screenshots:', gutil.colors.green(':heavy_check_mark: ') + dest);
+               screenshot(width.pop());
+             });
+          }, opts.delay);
         });
       };
       screenshot(width.pop());
@@ -74,6 +76,7 @@ module.exports = function (options) {
   opts.type = options.type || 'jpg';
   opts.folder = options.folder || 'screens';
   opts.timeout = options.timeout || 200;
+  opts.delay = options.delay || 0;
   opts.protocol = options.protocol || 'http';
   opts.host = options.host || 'localhost';
   opts.server = typeof options.server === 'undefined' ? true : options.server;
