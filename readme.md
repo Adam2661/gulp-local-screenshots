@@ -84,7 +84,8 @@ Timeout between files, in most cases you dont need to change that
 Type: `Number`  
 Default: '0'
 
-Delay after page render
+Delay capturing the screenshot.
+Useful when the site does things after load that you want to capture.
 
 #### protocol
 
