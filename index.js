@@ -45,7 +45,7 @@ var browser = function (file, opts, cb) {
           });
           setTimeout(function() {
              page.render(opts.folder + '/' + dest, function () {
-               gutil.log('gulp-local-screenshots:', gutil.colors.green(':heavy_check_mark: ') + dest);
+               gutil.log('gulp-local-screenshots:',  gutil.colors.green('✔ ') + dest);
                screenshot(width.pop());
              });
           }, opts.delay);
