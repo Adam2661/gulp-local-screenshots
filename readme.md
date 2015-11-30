@@ -1,4 +1,4 @@
-# [gulp](http://gulpjs.com)-local-screenshots [![Build Status](https://secure.travis-ci.org/danielhusar/gulp-local-screenshots.svg?branch=master)](http://travis-ci.org/danielhusar/gulp-local-screenshots)
+# [gulp](http://gulpjs.com)-local-screenshots-for-windows [![Build Status](https://secure.travis-ci.org/adam2661/gulp-local-screenshots-for-windows.svg?branch=master)](http://travis-ci.org/adam2661/gulp-local-screenshots-for-windows)
 
 This plugin will make the screenshots of your static html files using phantomjs.
 (make sure you have phantomjs installed on your machine)
@@ -7,14 +7,14 @@ This plugin will make the screenshots of your static html files using phantomjs.
 ## Install
 
 ```
-npm install --save-dev gulp-local-screenshots
+npm install --save-dev gulp-local-screenshots-for-windows
 ```
 
 ## Example
 
 ```javascript
 var gulp = require('gulp');
-var localScreenshots = require('gulp-local-screenshots');
+var localScreenshots = require('gulp-local-screenshots-for-windows');
 
 gulp.task('screens', function () {
   gulp.src('./public/*.html')

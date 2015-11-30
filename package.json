@@ -1,9 +1,9 @@
 {
-  "name": "gulp-local-screenshots",
-  "version": "2.1.0",
+  "name": "gulp-local-screenshots-for-windows",
+  "version": "0.1.0",
   "description": "Make the screenshots of your static html files using phantomjs.",
   "license": "MIT",
-  "repository": "danielhusar/gulp-local-screenshots",
+  "repository": "adam2661/gulp-local-screenshots-for-windows",
   "author": {
     "name": "Daniel Husar",
     "email": "dano.husar@gmail.com",
