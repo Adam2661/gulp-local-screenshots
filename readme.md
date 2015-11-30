@@ -72,6 +72,13 @@ Default: 'screens'
 
 Folder where to put images
 
+#### name
+
+Type: `String`  
+Default: ''
+
+String added to screenshot name
+
 #### timeout
 
 Type: `Number`  

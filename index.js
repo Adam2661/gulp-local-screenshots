@@ -30,9 +30,9 @@ var browser = function (file, opts, cb) {
           var dest;
 
           if ( opts.zoom > 1 ) {
-            dest = filename.replace('.html', '') + '-' + w + '-zoom-' + opts.zoom + '.' + opts.type;
+            dest = filename.replace('.html', '') + '-' + opts.name + '-zoom-' + opts.zoom + '.' + opts.type;
           } else {
-            dest = filename.replace('.html', '') + '-' + w + '.' + opts.type;
+            dest = filename.replace('.html', '') + '-' + opts.name + '.' + opts.type;
           }
           
           // Background problem under self-host server
@@ -45,7 +45,7 @@ var browser = function (file, opts, cb) {
           });
           setTimeout(function() {
              page.render(opts.folder + '/' + dest, function () {
-               gutil.log('gulp-local-screenshots:',  gutil.colors.green('✔ ') + dest);
+               gutil.log('Screenshots:', dest + gutil.colors.green(' done'));
                screenshot(width.pop());
              });
           }, opts.delay);
@@ -72,6 +72,7 @@ module.exports = function (options) {
   opts.port = options.port || '8080';
   opts.width = options.width || ['1024'];
   opts.height = options.height || '10';
+  opts.name = options.name || '';
   opts.zoom = options.zoom || '1';
   opts.type = options.type || 'jpg';
   opts.folder = options.folder || 'screens';
@@ -93,7 +94,7 @@ module.exports = function (options) {
     }
 
     if (file.isStream()) {
-      this.emit('error', new gutil.PluginError('gulp-local-screenshots', 'Streaming not supported'));
+      this.emit('error', new gutil.PluginError('gulp-local-screenshots-for-windows: ', 'Streaming not supported'));
       return cb();
     }
 
