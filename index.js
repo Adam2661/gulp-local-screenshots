@@ -8,13 +8,15 @@ var st = require('st');
 // Core screenshot function using phamtonJS
 var browser = function (file, opts, cb) {
   var width = opts.width.slice(0);
+  var height = opts.height.slice(0);
+  var name = opts.name.slice(0);
   var filename = file.replace(opts.path, '').replace('\\','/');
   var url = opts.protocol + '://' +  opts.host + ':' + opts.port + '/' + filename;
 
   phantom.create(function (ph) {
     ph.createPage(function (page) {
       page.set('zoomFactor', opts.zoom);
-      var screenshot = function (w) {
+      var screenshot = function (w,h,n) {
         if (!w) {
           ph.exit();
           setTimeout(cb, opts.timeout);
@@ -23,16 +25,16 @@ var browser = function (file, opts, cb) {
         }
         page.set('viewportSize', {
           width: w * opts.zoom,
-          height: opts.height * opts.zoom
+          height: h * opts.zoom
         });
 
         page.open(url, function() {
           var dest;
 
           if ( opts.zoom > 1 ) {
-            dest = filename.replace('.html', '') + '-' + opts.name + '-zoom-' + opts.zoom + '.' + opts.type;
+            dest = filename.replace('.html', '') + '-' + n + '-zoom-' + opts.zoom + '.' + opts.type;
           } else {
-            dest = filename.replace('.html', '') + '-' + opts.name + '.' + opts.type;
+            dest = filename.replace('.html', '') + '-' + n + '.' + opts.type;
           }
           
           // Background problem under self-host server
@@ -46,12 +48,12 @@ var browser = function (file, opts, cb) {
           setTimeout(function() {
              page.render(opts.folder + '/' + dest, function () {
                gutil.log('Screenshots:', dest + gutil.colors.green(' done'));
-               screenshot(width.pop());
+               screenshot(width.pop(),height.pop(),name.pop());
              });
           }, opts.delay);
         });
       };
-      screenshot(width.pop());
+      screenshot(width.pop(),height.pop(),name.pop());
     });
   }, {
   dnodeOpts: {
@@ -71,8 +73,8 @@ module.exports = function (options) {
   opts.path = options.path || 'public/';
   opts.port = options.port || '8080';
   opts.width = options.width || ['1024'];
-  opts.height = options.height || '10';
-  opts.name = options.name || '';
+  opts.height = options.height || ['10'];
+  opts.name = options.name || [''];
   opts.zoom = options.zoom || '1';
   opts.type = options.type || 'jpg';
   opts.folder = options.folder || 'screens';

@@ -1,19 +1,19 @@
 {
   "name": "gulp-local-screenshots-for-windows",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Make the screenshots of your static html files using phantomjs.",
   "license": "MIT",
   "repository": "adam2661/gulp-local-screenshots-for-windows",
   "author": {
-    "name": "Daniel Husar",
-    "email": "dano.husar@gmail.com",
-    "url": "https://github.com/danielhusar"
+    "name": "Adam Szałapski",
+    "email": "szalapski.adam@gmail.com",
+    "url": "https://github.com/adam2661"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha -R spec --timeout 10000"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
     "index.js"
@@ -29,10 +29,6 @@
     "through2": "^0.6.3",
     "phantom": "^0.7.2",
     "st": "^0.5.3"
-  },
-  "devDependencies": {
-    "mocha": "*",
-    "image-size": "^0.3.5"
   },
   "readmeFilename": "readme.md"
 }
