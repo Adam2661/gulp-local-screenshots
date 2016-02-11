@@ -45,12 +45,19 @@ var browser = function (file, opts, cb) {
             style.appendChild(text);
             document.head.insertBefore(style, document.head.firstChild);
           });
-          setTimeout(function() {
-             page.render(opts.folder + '/' + dest, function () {
-               gutil.log('Screenshots:', dest + gutil.colors.green(' done'));
-               screenshot(width.pop(),height.pop(),name.pop());
-             });
+          if ( opts.delay > 0 ) {
+            setTimeout(function() {
+              page.render(opts.folder + '/' + dest, function () {
+                gutil.log('Screenshots:', dest + gutil.colors.green(' done'));
+                screenshot(width.pop(),height.pop(),name.pop());
+              });
           }, opts.delay);
+          } else {
+            page.render(opts.folder + '/' + dest, function () {
+              gutil.log('Screenshots:', dest + gutil.colors.green(' done'));
+              screenshot(width.pop(),height.pop(),name.pop());
+            });
+          }
         });
       };
       screenshot(width.pop(),height.pop(),name.pop());
