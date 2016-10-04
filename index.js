@@ -13,7 +13,7 @@ var browser = function (file, opts, cb) {
   var filename = file.replace(opts.path, '').replace('\\','/');
   var url = opts.protocol + '://' +  opts.host + ':' + opts.port + '/' + filename;
 
-  phantom.create(function (ph) {
+  phantom.create('--web-security=' + opts.security, function (ph) {
     ph.createPage(function (page) {
       page.set('zoomFactor', opts.zoom);
       var screenshot = function (w,h,n) {
@@ -89,6 +89,7 @@ module.exports = function (options) {
   opts.delay = options.delay || 0;
   opts.protocol = options.protocol || 'http';
   opts.host = options.host || 'localhost';
+  opts.security = options.security || 'no';
   opts.server = typeof options.server === 'undefined' ? true : options.server;
 
   //start local webserver
